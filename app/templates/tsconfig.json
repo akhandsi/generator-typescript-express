@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "es2017",
+      "es2015",
+      "dom",
+      "es6"
+    ],
+    "module": "commonjs",
+    "outDir": "./bin",
+    "sourceMap": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "types": ["reflect-metadata"],
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
