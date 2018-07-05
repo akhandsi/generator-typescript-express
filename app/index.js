@@ -10,7 +10,7 @@ module.exports = class extends Generator {
             {
                 type    : 'input',
                 name    : 'name',
-                message : 'Enter a name for the new component (i.e.: myNewComponent): '
+                message : 'Enter a name for the project (i.e.: myNewProject): '
             }
         ]).then( (answers) => {
             // create destination folder
@@ -21,7 +21,8 @@ module.exports = class extends Generator {
             );
             this.fs.copyTpl(
                 this.templatePath('package.json'),
-                this.destinationPath('package.json')
+                this.destinationPath('package.json'),
+                {project: answers.name}
             );
             this.fs.copyTpl(
                 this.templatePath('tslint.json'),
