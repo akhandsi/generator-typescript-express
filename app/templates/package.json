@@ -7,7 +7,7 @@
     "start": "npm run build:live",
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./server/server.ts"
   },
-  "author": "",
+  "author": "Akhand Singh <akhandsingh68@gmail.com>",
   "engines": {
     "node": ">=8.9.4"
   },
