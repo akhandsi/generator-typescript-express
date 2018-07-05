@@ -1,9 +1,9 @@
 {
-  "name": "generator-typescript-express",
+  "name": "generator-typescript-express-starter",
   "version": "0.0.2",
   "description": "yeoman generator for express & typescript projects",
   "main": "index.js",
-  "repository": "https://github.com/akhandsi/generator-typescript-express.git",
+  "repository": "https://github.com/akhandsi/generator-typescript-express-starter.git",
   "author": "Akhand Singh <akhand.singh@turbonomic.com>",
   "license": "MIT",
   "dependencies": {

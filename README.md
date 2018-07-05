@@ -10,12 +10,12 @@ Second, install Yeoman. More information about Yeoman: http://yeoman.io/
 
 # Installation
 ```
-$ npm install -g generator-typescript-express
+$ npm install -g generator-typescript-express-starter
 ```
 
 # Usage
 ```
-$ yo typescript-express
+$ yo typescript-express-starter
 ```
 
 # What does this generator do?
