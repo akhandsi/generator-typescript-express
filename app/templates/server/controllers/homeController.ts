@@ -1,7 +1,7 @@
 import { Controller, Get } from '@tsed/common';
 import * as express from 'express';
 
-@Controller('/fifa')
+@Controller('/home')
 export class HomeController {
 
     @Get('/')
