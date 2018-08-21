@@ -1,6 +1,6 @@
 {
   "name": "generator-typescript-express-starterkit",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "yeoman generator for express & typescript projects",
   "main": "index.js",
   "repository": "https://github.com/akhandsi/generator-typescript-express-starterkit.git",
