@@ -1,26 +1,48 @@
+import { GlobalAcceptMimesMiddleware, ServerLoader, ServerSettings } from '@tsed/common';
+import '@tsed/swagger';
 import * as bodyParser from 'body-parser';
+import compress = require('compression');
+import cookieParser = require('cookie-parser');
+import cors = require('cors');
 import * as express from 'express';
-import {IRegistrableController} from './controller/controller';
-import container from './inversify.config';
-import TYPES from './types';
-import {logger} from './utils/logger';
+import methodOverride = require('method-override');
+import Path = require('path');
+import { logger } from './utils/logger';
 
-const app: express.Application = express();
-app.use(bodyParser.json());
+@ServerSettings({
+    acceptMimes: ['application/json'],
+    httpPort: process.env.PORT || 3001,
+    rootDir: Path.resolve(__dirname),
+    swagger: [
+        {
+            path: '/api-docs',
+        },
+    ],
+})
+export class Server extends ServerLoader {
+    public $onMountingMiddlewares(): void | Promise<any> {
+        this.use(GlobalAcceptMimesMiddleware)
+            .use(cors())
+            .use(cookieParser())
+            .use(compress({}))
+            .use(methodOverride())
+            .use(bodyParser.json())
+            .use(
+                bodyParser.urlencoded({
+                    extended: true,
+                }),
+            );
+        return;
+    }
 
-// register all endpoints from Ioc controllers
-const controllers: RegistrableController[] = container.getAll<IRegistrableController>(TYPES.Controller);
-controllers.forEach(controller => controller.register(app));
+    public $onReady(): void {
+        logger.info('Server started...');
+    }
 
-app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
-    logger.error(err.stack);
-    next(err);
-});
+    public $onServerInitError(err: any): void {
+        logger.error(err);
+    }
+}
 
-app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
-    res.status(500).send('Internal Server Error');
-});
-
-app.listen(3001,() => {
-    logger.info('Example app listening on port 3001!');
-});
+const server = new Server();
+server.start().catch(err => logger.error(err));

@@ -1,25 +1,32 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "lib": [
-      "es2017",
       "es2015",
-      "dom",
-      "es6"
+      "dom"
     ],
+    "declaration": true,
     "module": "commonjs",
-    "outDir": "./bin",
+    "outDir": "./build/",
+    "removeComments": true,
     "sourceMap": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "types": ["reflect-metadata"],
     "noImplicitAny": false,
     "noImplicitThis": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "types": [
+      "node",
+      "reflect-metadata"
+    ]
   },
   "include": [
-    "src/**/*.ts"
+    "server/**/*.ts"
   ],
   "exclude": [
     "node_modules"
